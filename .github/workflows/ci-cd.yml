@@ -1,0 +1,48 @@
+name: BeastFit CI/CD
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run seed
+      - name: Testar interface e API
+        run: |
+          npm start > /tmp/beastfit.log 2>&1 &
+          trap 'kill $! 2>/dev/null || true' EXIT
+          curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 1 http://localhost:8080/api/health
+          curl --fail --silent --show-error http://localhost:8080/ -o /tmp/beastfit.html
+          npm run smoke
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    concurrency: beastfit-coolify
+    steps:
+      - name: Solicitar deploy do BeastFit no Coolify
+        env:
+          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          if [ -z "$COOLIFY_WEBHOOK" ] || [ -z "$COOLIFY_TOKEN" ]; then
+            echo "::error::Configure COOLIFY_WEBHOOK e COOLIFY_TOKEN no repositório."
+            exit 1
+          fi
+          curl --fail --silent --show-error --max-time 30 --request POST "$COOLIFY_WEBHOOK" \
+            --header "Authorization: Bearer $COOLIFY_TOKEN" --output /dev/null

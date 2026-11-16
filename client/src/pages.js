@@ -1,0 +1,73 @@
+export const pageMeta = [
+  { path: '/', title: 'Command Center', group: 'Nucleo', type: 'dashboard', endpoint: '/api/summary', objective: 'Visao executiva de toda a rede com KPIs, IA, risco, retencao e status operacional.' },
+  { path: '/rede', title: 'Mapa da Rede', group: 'Nucleo', type: 'units', endpoint: '/api/units', objective: 'Controlar multiplas unidades e capacidade operacional.' },
+  { path: '/unidades', title: 'Unidades Multiacademia', group: 'Nucleo', type: 'table', endpoint: '/api/units', objective: 'Administrar unidade, status, cidade e alunos vinculados.' },
+  { path: '/alunos', title: 'Alunos 360', group: 'Cadastro', type: 'students', endpoint: '/api/students?limit=220', objective: 'Cadastro mestre, segmento, risco, aderencia e acesso ao perfil completo.' },
+  { path: '/cadastro-rapido', title: 'Cadastro Rapido', group: 'Cadastro', type: 'studentCreate', endpoint: '/api/students', objective: 'Criar aluno com LGPD, meta inicial e trilha de auditoria.' },
+  { path: '/consentimento-lgpd', title: 'Consentimento LGPD', group: 'Cadastro', type: 'complianceBoard', endpoint: '/api/students?limit=80', objective: 'Validar aceite, finalidade e preferencias de privacidade.' },
+  { path: '/triagem-parq', title: 'Triagem PAR-Q+', group: 'Cadastro', type: 'riskBoard', endpoint: '/api/students?limit=80', objective: 'Checar aptidao, restricoes e bloqueios antes da prescricao.' },
+  { path: '/avaliacoes-fisicas', title: 'Avaliacoes Fisicas', group: 'Cadastro', type: 'evaluationBoard', endpoint: '/api/students?limit=80', objective: 'Registrar composicao corporal, VO2, 1RM, FC repouso e mobilidade.' },
+  { path: '/metas-restricoes', title: 'Metas e Restricoes', group: 'Cadastro', type: 'goalBoard', endpoint: '/api/students?limit=80', objective: 'Definir objetivo, disponibilidade, preferencia e limite clinico.' },
+  { path: '/wearables', title: 'Wearables Hub', group: 'Dados', type: 'wearables', endpoint: '/api/students?limit=40', objective: 'Normalizar HRV, sono, passos, FC e readiness com fallback.' },
+  { path: '/feature-store', title: 'Feature Store', group: 'Dados', type: 'table', endpoint: '/api/feature-store', objective: 'Centralizar variaveis versionadas para IA e auditoria.' },
+  { path: '/etl-pipeline', title: 'ETL Pipeline', group: 'Dados', type: 'etl', endpoint: '/api/etl/run', objective: 'Simular extract, transform, load, hashing e qualidade de dados.' },
+  { path: '/dicionario-dados', title: 'Dicionario de Dados', group: 'Dados', type: 'dictionary', endpoint: '/api/data-dictionary', objective: 'Ver tabelas, colunas, chaves e entidades do SQLite.' },
+  { path: '/atlas-exercicios', title: 'Atlas de Exercicios Animado', group: 'Treinos', type: 'atlas', endpoint: '/api/exercises', objective: 'Exibir exercicios com corpo animado e musculos em vermelho.' },
+  { path: '/mapa-muscular', title: 'Mapa Muscular Vermelho', group: 'Treinos', type: 'muscleMap', endpoint: '/api/exercises', objective: 'Ver zonas ativadas por grupo muscular com pulso visual.' },
+  { path: '/equipamentos', title: 'Equipamentos', group: 'Treinos', type: 'table', endpoint: '/api/equipment', objective: 'Gerenciar equipamento, categoria, disponibilidade e exercicios.' },
+  { path: '/catalogo-regras', title: 'Catalogo e Regras', group: 'Treinos', type: 'rules', endpoint: '/api/business-rules', objective: 'Controlar contraindicoes, guardrails e parametros de prescricao.' },
+  { path: '/planos-treino', title: 'Planos de Treino', group: 'Treinos', type: 'plans', endpoint: '/api/plans', objective: 'Monitorar planos aprovados, publicados, suspensos e em revisao.' },
+  { path: '/treinos-guia', title: '60 Paginas de Treino', group: 'Treinos', type: 'workoutList', endpoint: '/api/workout-pages', objective: 'Biblioteca dinamica de treinos por objetivo, nivel e guardrail.' },
+  { path: '/ficha-impressa', title: 'Ficha Inteligente', group: 'Treinos', type: 'printSheet', endpoint: '/api/plans', objective: 'Gerar ficha visual com QR conceitual e instrucoes do aluno.' },
+  { path: '/gerador-ia', title: 'Gerador IA XAI', group: 'IA', type: 'aiGenerator', endpoint: '/api/recommendations/generate', objective: 'Gerar recomendacao personalizada com scores, XAI e guardrails.' },
+  { path: '/revisao-humana', title: 'Revisao Humana', group: 'IA', type: 'review', endpoint: '/api/recommendations', objective: 'Aprovar, rejeitar ou ajustar plano com explicabilidade.' },
+  { path: '/explicabilidade-xai', title: 'XAI SHAP Visual', group: 'IA', type: 'xai', endpoint: '/api/recommendations', objective: 'Mostrar fatores explicativos e influencia da recomendacao.' },
+  { path: '/guardrails', title: 'Guardrails de Seguranca', group: 'Seguranca', type: 'guardrails', endpoint: '/api/recommendations', objective: 'Priorizar seguranca sobre performance e preferencia.' },
+  { path: '/kill-switch', title: 'Kill-Switch Operacional', group: 'Seguranca', type: 'killSwitch', endpoint: '/api/kill-switch', objective: 'Suspender plano ou sessao em risco critico.' },
+  { path: '/sessoes', title: 'Sessoes ao Vivo', group: 'Execucao', type: 'sessions', endpoint: '/api/sessions', objective: 'Acompanhar inicio, encerramento, presenca e origem das sessoes.' },
+  { path: '/execucao-exercicios', title: 'Execucao de Exercicios', group: 'Execucao', type: 'execution', endpoint: '/api/plans', objective: 'Registrar carga, repeticoes, RPE e dor por exercicio.' },
+  { path: '/feedback-rpe', title: 'Feedback RPE Dor Fadiga', group: 'Execucao', type: 'feedback', endpoint: '/api/sessions', objective: 'Fechar o ciclo de personalizacao com sinais subjetivos.' },
+  { path: '/replanejamento', title: 'Replanejamento Inteligente', group: 'IA', type: 'replan', endpoint: '/api/recommendations', objective: 'Gerar nova versao apos evento, estagnacao ou mudanca de meta.' },
+  { path: '/agenda-reavaliacao', title: 'Agenda de Reavaliacao', group: 'Operacao', type: 'classes', endpoint: '/api/classes', objective: 'Planejar checkpoints, aulas e capacidade por unidade.' },
+  { path: '/retencao-radar', title: 'Radar de Retencao', group: 'Retencao', type: 'retention', endpoint: '/api/dashboard/retention', objective: 'Antecipar churn, queda de frequencia e intervencoes.' },
+  { path: '/reengajamento', title: 'Reengajamento Proativo', group: 'Retencao', type: 'campaigns', endpoint: '/api/campaigns', objective: 'Acionar campanhas, lembretes e contato humano.' },
+  { path: '/campanhas', title: 'Campanhas CRM', group: 'Retencao', type: 'campaigns', endpoint: '/api/campaigns', objective: 'Criar fluxos por ausencia, aniversario, NPS e segmento.' },
+  { path: '/notificacoes', title: 'Centro de Notificacoes', group: 'Retencao', type: 'notifications', endpoint: '/api/notifications', objective: 'Organizar push, e-mail, WhatsApp e recepcao.' },
+  { path: '/pagamentos', title: 'Planos e Pagamentos', group: 'Operacao', type: 'payments', endpoint: '/api/payments', objective: 'Cruzar mensalidade, status financeiro e risco de evasao.' },
+  { path: '/checkins', title: 'Check-ins QR', group: 'Operacao', type: 'table', endpoint: '/api/checkins', objective: 'Registrar presenca por QR, catraca ou app.' },
+  { path: '/aulas-coletivas', title: 'Aulas Coletivas', group: 'Operacao', type: 'classes', endpoint: '/api/classes', objective: 'Gerenciar capacidade, lotacao e turmas.' },
+  { path: '/usuarios-rbac', title: 'Usuarios e RBAC', group: 'Admin', type: 'table', endpoint: '/api/users', objective: 'Controlar perfis, permissoes, equipes e segregacao.' },
+  { path: '/admin-unidades', title: 'Admin da Rede', group: 'Admin', type: 'units', endpoint: '/api/units', objective: 'Administrar multiunidade e status global.' },
+  { path: '/dashboards', title: 'Dashboards Executivos', group: 'Gestao', type: 'dashboard', endpoint: '/api/summary', objective: 'Visoes operacionais, clinicas, executivas e de eficiencia.' },
+  { path: '/relatorios-bi', title: 'Relatorios BI', group: 'Gestao', type: 'report', endpoint: '/api/reports/executive', objective: 'Relatorio executivo com retenção, fairness e seguranca.' },
+  { path: '/modelos-ia', title: 'Modelos de IA', group: 'MLOps', type: 'models', endpoint: '/api/model-versions', objective: 'Ver versoes, metricas, ambiente, hash e status.' },
+  { path: '/mlops', title: 'MLOps Train Deploy', group: 'MLOps', type: 'mlops', endpoint: '/api/models/train', objective: 'Treinar, versionar, aprovar e implantar modelos.' },
+  { path: '/snapshots-datasets', title: 'Snapshots de Dataset', group: 'MLOps', type: 'models', endpoint: '/api/model-versions', objective: 'Controlar janelas temporais, hash e integridade.' },
+  { path: '/fairness', title: 'Fairness e Vies', group: 'Governanca', type: 'fairness', endpoint: '/api/fairness', objective: 'Auditar disparate impact, equality of odds e grupos.' },
+  { path: '/auditoria', title: 'Trilha de Auditoria', group: 'Governanca', type: 'audit', endpoint: '/api/audit', objective: 'Rastrear acesso, alteracao, consulta e compartilhamento.' },
+  { path: '/incidentes', title: 'Incidentes e Eventos', group: 'Governanca', type: 'incidents', endpoint: '/api/incidents', objective: 'Registrar gravidade, causa, resposta e acao corretiva.' },
+  { path: '/compliance', title: 'Compliance LGPD', group: 'Governanca', type: 'complianceBoard', endpoint: '/api/students?limit=80', objective: 'Privacy by design, exclusao, consentimento e finalidade.' },
+  { path: '/api-galaxy', title: 'API Galaxy 100', group: 'Integracoes', type: 'apiHub', endpoint: '/api/integrations', objective: '100 conectores gratuitos/opcionais com fallback local seguro.' },
+  { path: '/ab-pilot', title: 'Piloto A/B e Stepped Wedge', group: 'Pesquisa', type: 'experiment', endpoint: '/api/dashboard/retention', objective: 'Simular impacto causal da IA versus prescricao usual.' },
+  { path: '/series-temporais', title: 'Time Series Lab', group: 'Pesquisa', type: 'timeSeries', endpoint: '/api/students?limit=40', objective: 'Analisar HRV, sono, carga e evolucao ao longo do tempo.' },
+  { path: '/uplift-retencao', title: 'Uplift Studio', group: 'Retencao', type: 'retention', endpoint: '/api/dashboard/retention', objective: 'Escolher a acao que mais aumenta chance de permanencia.' },
+  { path: '/gamificacao', title: 'Gamificacao Beast', group: 'Experiencia', type: 'gamification', endpoint: '/api/gamification', objective: 'Badges, pontos, desafios e motivacao.' },
+  { path: '/portal-instrutor', title: 'Portal do Instrutor', group: 'Portais', type: 'instructor', endpoint: '/api/recommendations', objective: 'Fila de revisao, alunos criticos, XAI e ajustes.' },
+  { path: '/app-aluno', title: 'App do Aluno Preview', group: 'Portais', type: 'studentApp', endpoint: '/api/students/1', objective: 'Experiencia do aluno com treino, progresso e feedback.' },
+  { path: '/recepcao', title: 'Mesa da Recepcao', group: 'Portais', type: 'reception', endpoint: '/api/students?limit=60', objective: 'Cadastros, aniversarios, ausencia e contato proativo.' },
+  { path: '/aniversariantes', title: 'Aniversariantes e Relacionamento', group: 'CRM', type: 'birthdays', endpoint: '/api/students?limit=80', objective: 'Atencao humana de alto impacto para reduzir evasao.' },
+  { path: '/playbooks', title: 'Playbooks Operacionais', group: 'Governanca', type: 'playbooks', endpoint: '/api/business-rules', objective: 'Guias para incidentes, LGPD, falha de sensor e risco.' },
+  { path: '/arquitetura', title: 'Arquitetura Logica', group: 'Arquitetura', type: 'architecture', endpoint: '/api/architecture', objective: 'Camadas, canais, dados, analytics e integracoes externas.' },
+  { path: '/casos-de-uso', title: '80 Casos de Uso', group: 'Arquitetura', type: 'useCases', endpoint: '/api/use-cases', objective: 'Casos originais do TCC e expansoes implementadas.' },
+  { path: '/configuracoes', title: 'Configuracoes Beast', group: 'Admin', type: 'settings', endpoint: '/api/summary', objective: 'Tema vermelho/preto, operacao local e seguranca do demo.' }
+];
+
+export function findPage(path) {
+  return pageMeta.find((page) => page.path === path) || pageMeta[0];
+}
+
+export const groupedPages = pageMeta.reduce((acc, page) => {
+  acc[page.group] ||= [];
+  acc[page.group].push(page);
+  return acc;
+}, {});
